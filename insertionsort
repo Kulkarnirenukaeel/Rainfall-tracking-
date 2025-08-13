@@ -1,0 +1,56 @@
+#include <iostream>  // For input and output 
+using namespace std; 
+ 
+int main() { 
+    int n;  // This will store how many cards the user has 
+ 
+    // Show a welcome message 
+    cout << " Cards Game!" << endl; 
+ 
+    // Ask the user how many cards they want to enter 
+    cout << "Enter how many cards you have: "; 
+    cin >> n; 
+ 
+    // Make an array to store the card numbers 
+    int cards[50];  // We assume user won't enter more than 50 cards 
+ 
+    // Ask the user to enter each card number one by one 
+    cout << "Enter your card numbers: "; 
+    for (int i = 0; i < n; i++) { 
+        cin >> cards[i];  // Take input and store in array 
+    } 
+ 
+    // Show the cards before sorting 
+    cout << "\nBefore sorting:" << endl; 
+    cout << "Cards: "; 
+    for (int i = 0; i < n; i++) { 
+        cout << cards[i] << " "; 
+    } 
+    cout << endl; 
+ 
+    // Now we sort the cards manually using insertion sort 
+    // We go one by one and put each card in the right place 
+    for (int i = 1; i < n; i++) { 
+        int key = cards[i];     // Pick the card to place 
+        int j = i - 1; 
+ 
+        // Move cards that are bigger than key to the right 
+        while (j >= 0 && cards[j] > key) { 
+            cards[j + 1] = cards[j];  // Shift card to the right 
+            j = j - 1;                // Move left 
+        } 
+ 
+        // Place the picked card at the right position 
+        cards[j + 1] = key; 
+    } 
+ 
+    // Show the cards after sorting 
+    cout << "\nAfter sorting :" << endl; 
+    cout << "Cards: "; 
+    for (int i = 0; i < n; i++) { 
+        cout << cards[i] << " "; 
+    } 
+    cout << endl; 
+ 
+    return 0;  // End of the program 
+} 
